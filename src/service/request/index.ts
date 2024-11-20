@@ -42,14 +42,14 @@ class Request {
     )
   }
 
-  request(config: RequestConfig) {
+  request<T = any>(config: RequestConfig) {
     // 单次请求的成功拦截处理
     if (config.interceptors?.requestSuccessFn) {
       config = config.interceptors.requestSuccessFn(config as any)
     }
-    return new Promise((resolve, reject) => {
+    return new Promise<T>((resolve, reject) => {
       this.instance
-        .request(config)
+        .request<any, T>(config)
         .then((res) => {
           if (config.interceptors?.responseSuccessFn) {
             res = config.interceptors.responseSuccessFn(res)
@@ -59,7 +59,7 @@ class Request {
         })
         .catch((err) => {
           console.log(err)
-          return err
+          reject(err)
         })
     })
   }

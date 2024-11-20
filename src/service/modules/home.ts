@@ -1,7 +1,13 @@
 import request from '../index'
 
+interface IHomeData {
+  data: any
+  returnCode: string
+  success: boolean
+}
+
 request
-  .request({
+  .request<IHomeData>({
     url: '/home/multidata',
     interceptors: {
       requestSuccessFn(config) {
@@ -19,7 +25,7 @@ request
     }
   })
   .then((res) => {
-    console.log(res)
+    console.log(res.data, res.returnCode, res.success)
   })
   .catch((err) => {
     console.log(err)
