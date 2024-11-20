@@ -42,7 +42,7 @@ class Request {
     )
   }
 
-  request<T = any>(config: RequestConfig<T>) {
+  request<T>(config: RequestConfig<T>) {
     // 单次请求的成功拦截处理
     if (config.interceptors?.requestSuccessFn) {
       config = config.interceptors.requestSuccessFn(config as any)
@@ -51,6 +51,7 @@ class Request {
       this.instance
         .request<any, T>(config)
         .then((res) => {
+          // 单次响应成功的拦截处理
           if (config.interceptors?.responseSuccessFn) {
             res = config.interceptors.responseSuccessFn(res)
           }
@@ -62,6 +63,14 @@ class Request {
           reject(err)
         })
     })
+  }
+
+  get<T = any>(config: RequestConfig<T>) {
+    return this.request({ ...config, method: 'GET' })
+  }
+
+  post<T = any>(config: RequestConfig<T>) {
+    return this.request({ ...config, method: 'POST' })
   }
 }
 
