@@ -9,15 +9,15 @@ export interface CreateRequestConfig extends CreateAxiosDefaults {
   interceptors?: Interceptors
 }
 
-export interface Interceptors {
+export interface Interceptors<T = AxiosResponse> {
   requestSuccessFn: (
     config: InternalAxiosRequestConfig
   ) => InternalAxiosRequestConfig
   requestFailureFn: (err: any) => any
-  responseSuccessFn: (res: AxiosResponse) => AxiosResponse
+  responseSuccessFn: (res: T) => T
   responseFailureFn: (err: any) => any
 }
 
-export interface RequestConfig extends AxiosRequestConfig {
-  interceptors?: Interceptors
+export interface RequestConfig<T> extends AxiosRequestConfig {
+  interceptors?: Interceptors<T>
 }
