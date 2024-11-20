@@ -4,6 +4,7 @@ import { Link, useRoutes } from 'react-router-dom'
 import routes from './router'
 import { shallowEqualApp, useAppDispatch, useAppSelector } from './store'
 import { changeNameAction } from './store/modules/counter'
+import './service/modules/home'
 
 // type GetStateFnType = typeof store.getState
 // type IRootState = ReturnType<GetStateFnType>
