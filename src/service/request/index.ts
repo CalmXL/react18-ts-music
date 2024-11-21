@@ -10,11 +10,11 @@ class Request {
     // 每个 instance 都添加拦截器
     this.instance.interceptors.request.use(
       (config) => {
-        console.log('全局请求成功的拦截')
+        // console.log('全局请求成功的拦截')
         return config
       },
       (err) => {
-        console.log('全局请求失败的拦截')
+        // console.log('全局请求失败的拦截')
         return err
       }
     )
@@ -32,11 +32,11 @@ class Request {
 
     this.instance.interceptors.response.use(
       (res) => {
-        console.log('全局响应成功的拦截')
-        return res
+        // console.log('全局响应成功的拦截')
+        return res.data
       },
       (err) => {
-        console.log('全局响应失败的拦截')
+        // console.log('全局响应失败的拦截')
         return err
       }
     )
@@ -55,7 +55,6 @@ class Request {
           if (config.interceptors?.responseSuccessFn) {
             res = config.interceptors.responseSuccessFn(res)
           }
-
           resolve(res)
         })
         .catch((err) => {
@@ -71,6 +70,14 @@ class Request {
 
   post<T = any>(config: RequestConfig<T>) {
     return this.request({ ...config, method: 'POST' })
+  }
+
+  delete<T = any>(config: RequestConfig<T>) {
+    return this.request({ ...config, method: 'DELETE' })
+  }
+
+  patch<T = any>(config: RequestConfig<T>) {
+    return this.request({ ...config, method: 'PATCH' })
   }
 }
 
