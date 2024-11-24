@@ -10,9 +10,9 @@ interface IState {
   counter: number
 }
 
-interface ISnapshot {
-  address: string
-}
+// interface ISnapshot {
+//   address: string
+// }
 
 class Demo extends PureComponent<IProps, IState> {
   // name = 'aaa'
