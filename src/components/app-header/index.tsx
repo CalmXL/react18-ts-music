@@ -48,6 +48,7 @@ const AppHeader: FC<IProps> = () => {
         </HeaderLeft>
         <HeaderRight>right</HeaderRight>
       </div>
+      <div className="divider"></div>
     </HeaderWrapper>
   )
 }
