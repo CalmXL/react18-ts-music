@@ -1,6 +1,9 @@
 import React, { memo } from 'react'
 import type { FC, ReactNode } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
+import { Input } from 'antd'
+import { SearchOutlined } from '@ant-design/icons'
+
 import { HeaderLeft, HeaderRight, HeaderWrapper } from '../app-footer/style'
 import headerTitles from '@/assets/data/header-title.json'
 
@@ -46,7 +49,16 @@ const AppHeader: FC<IProps> = () => {
             })}
           </div>
         </HeaderLeft>
-        <HeaderRight>right</HeaderRight>
+        <HeaderRight>
+          <Input
+            className="search"
+            size="large"
+            placeholder="音乐/视频/电台/用户"
+            prefix={<SearchOutlined />}
+          />
+          <span className="center">创作者中心</span>
+          <span className="login">登录</span>
+        </HeaderRight>
       </div>
       <div className="divider"></div>
     </HeaderWrapper>
