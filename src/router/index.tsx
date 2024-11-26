@@ -37,7 +37,7 @@ const routes: RouteObject[] = [
         element: <Recommend />
       },
       {
-        path: '/discover/rank',
+        path: '/discover/ranking',
         element: <Rank />
       },
       {
