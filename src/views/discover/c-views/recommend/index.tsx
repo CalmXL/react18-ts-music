@@ -1,60 +1,21 @@
 import request from '@/service'
+import { useAppDispatch } from '@/store'
 import React, { memo, useEffect, useState } from 'react'
 import type { FC, ReactNode } from 'react'
+import { fetchBannerDataAction } from './store/recommend'
 
 interface IProps {
   children?: ReactNode
 }
 
-interface IBanneData {
-  imageUrl: string
-  targetId: number
-  adid: any
-  targetType: number
-  titleColor: string
-  typeTitle: string
-  url: any
-  exclusive: boolean
-  monitorImpress: any
-  monitorClick: any
-  monitorType: any
-  monitorImpressList: any
-  monitorClickList: any
-  monitorBlackList: any
-  extMonitor: any
-  extMonitorInfo: any
-  adSource: any
-  adLocation: any
-  adDispatchJson: any
-  encodeId: string
-  program: any
-  event: any
-  video: any
-  song: any
-  scm: string
-  bannerBizType: string
-}
-
 const Recommend: FC<IProps> = () => {
-  const [banners, setBanners] = useState<IBanneData[]>([])
-
+  // 调用 dispatch 获取数据
+  const dispatch = useAppDispatch()
   useEffect(() => {
-    request
-      .get({
-        url: '/banner'
-      })
-      .then((res) => {
-        setBanners(res.banners)
-      })
+    dispatch(fetchBannerDataAction())
   }, [])
 
-  return (
-    <div>
-      {banners.map((item, index) => {
-        return <div key={index}>{item.imageUrl}</div>
-      })}
-    </div>
-  )
+  return <div>Banners</div>
 }
 
 export default memo(Recommend)
