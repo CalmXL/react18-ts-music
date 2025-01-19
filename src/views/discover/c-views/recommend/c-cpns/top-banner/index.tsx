@@ -1,5 +1,5 @@
 import { useAppSelector } from '@/store'
-import React, { memo, useRef, useState } from 'react'
+import React, { memo, useEffect, useRef, useState } from 'react'
 import type { FC, ReactNode, ElementRef } from 'react'
 import { shallowEqual } from 'react-redux'
 import { Carousel } from 'antd'
