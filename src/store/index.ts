@@ -10,6 +10,7 @@ import counterReducer from './modules/counter'
 
 import recommendReducer from '@/views/discover/c-views/recommend/store/recommend'
 
+// 1. 创建一个 store
 const store = configureStore({
   reducer: {
     counter: counterReducer,

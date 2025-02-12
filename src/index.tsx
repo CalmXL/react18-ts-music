@@ -14,6 +14,7 @@ const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   // <React.StrictMode>
   // </React.StrictMode>
+  // 通过 react-redux 中的  Provider 将 App 进行包裹, 并将  store  作为 props.
   <Provider store={store}>
     <ThemeProvider theme={theme}>
       <HashRouter>

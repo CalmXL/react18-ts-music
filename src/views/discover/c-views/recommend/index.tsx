@@ -1,4 +1,3 @@
-import request from '@/service'
 import { useAppDispatch } from '@/store'
 import React, { memo, useEffect, useState } from 'react'
 import type { FC, ReactNode } from 'react'
@@ -9,6 +8,7 @@ import {
 import TopBanner from './c-cpns/top-banner'
 import { RecommendLeft, RecommendRight, RecommendWrapper } from './style'
 import HotRecommend from './c-cpns/hot-recommend'
+import NewAlbum from './c-cpns/new-album'
 
 interface IProps {
   children?: ReactNode
@@ -23,21 +23,20 @@ const Recommend: FC<IProps> = () => {
   }, [])
 
   return (
-    <div>
+    <RecommendWrapper>
       <TopBanner />
-      <RecommendWrapper>
-        <div className="content wrap-v2">
-          <RecommendLeft>
-            <div className="left">
-              <HotRecommend></HotRecommend>
-            </div>
-          </RecommendLeft>
-          <RecommendRight>
-            <div className="right">right</div>
-          </RecommendRight>
-        </div>
-      </RecommendWrapper>
-    </div>
+      <div className="content wrap-v2">
+        <RecommendLeft>
+          <div className="left">
+            <HotRecommend />
+            <NewAlbum />
+          </div>
+        </RecommendLeft>
+        <RecommendRight>
+          <div className="right">right</div>
+        </RecommendRight>
+      </div>
+    </RecommendWrapper>
   )
 }
 
