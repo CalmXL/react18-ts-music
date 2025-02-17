@@ -13,3 +13,13 @@ export function getHotRecommend() {
     url: '/personalized'
   })
 }
+
+// 获取新碟上架
+export function getNewAlbum(limit = 10) {
+  return request.get({
+    url: '/album/newest',
+    params: {
+      limit
+    }
+  })
+}
